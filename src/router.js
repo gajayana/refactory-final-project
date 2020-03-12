@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import auth from '@/middlewares/auth'
+import store from './store/index'
 
 Vue.use(Router)
 
@@ -9,15 +10,25 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: () => import(/* webpackChunkName: "home" */ './views/Home.vue'),
+      beforeEnter(to, from, next) {
+        if (!store.state.groups.items) store.dispatch('groups/fetch')
+        if (!store.state.users.persons) store.dispatch('users/fetch')
+        if (!store.state.users.profiles) store.dispatch('users/fetchProfiles')
+        if (!store.state.attendances.persons) store.dispatch('attendances/fetch')
+        if (!store.state.events.items) store.dispatch('events/fetch')
+        next()
+      },
+      meta: {
+        middleware: [
+          auth
+        ]
+      },
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
     }
   ]
 })
