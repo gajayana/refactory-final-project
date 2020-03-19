@@ -1,13 +1,13 @@
 <template lang="pug">
   v-navigation-drawer(v-model='drawer', app)
-    v-card(flat, tile)
+    v-card(v-if='user && user_profile && userGroup', flat, tile)
       v-img.align-end.white--text(:alt='user_profile.fullname', :src='user_profile.image', aspect-ratio='1', gradient='to bottom, rgba(100,115,201,.33), rgba(25,32,72,.7)')
         v-card-text
           h1.d-block.mb-2 {{ user_profile.fullname }}
           p.caption.d-block.mb-0 {{ user.email }}
           p.caption.d-block.mb-0 Grup: {{ userGroup[0].label }}
 
-    v-list(dense,nav)
+    v-list(v-if='navItems', dense, nav)
       v-list-item-group
         v-list-item(v-for='(item, key) in navItems', :key='`nav-${key}`', :to='item.to')
           v-list-item-content

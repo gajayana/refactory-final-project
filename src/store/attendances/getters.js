@@ -1,6 +1,6 @@
 export default {
   absentees(state, getters, rootState, rootGetters) {
-    if (!rootGetters['users/profiles']) return
+    if (!rootGetters['users/profiles'] || !state.persons) return
 
     let items = [];
 
@@ -11,7 +11,7 @@ export default {
     return items
   },
   attendees(state, getters, rootState, rootGetters) {
-    if (!rootGetters['users/profiles']) return
+    if (!rootGetters['users/profiles'] || !state.persons) return
     return state.persons.map((ob) => {
       const person = rootGetters['users/profiles'].filter(el => el.uuid === ob)
       return person[0]

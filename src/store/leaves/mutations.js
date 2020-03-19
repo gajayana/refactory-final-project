@@ -1,4 +1,7 @@
 export default {
+  setCategories(state, payload) {
+    state.categories = payload
+  },
   setError(state, payload) {
     state.error = payload
   },
@@ -8,10 +11,7 @@ export default {
   setFilterStr(state, payload) {
     state.filter_str = payload
   },
-  setPersons(state, payload) {
-    state.persons = payload
-  },
-  setProfiles(state, payload) {
-    state.profiles = payload
-  },
+  setItems(state, payload) {
+    state.items = payload
+  }
 }

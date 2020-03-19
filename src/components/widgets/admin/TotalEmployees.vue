@@ -16,12 +16,15 @@ export default {
       profiles: state => state.users.profiles,
     }),
     female() {
+      if(!this.profiles) return
       return this.profiles.filter(ob => ob.group[0] === 3 && ob.gender === 'female').length
     },
     male() {
+      if(!this.profiles) return
       return this.profiles.filter(ob => ob.group[0] === 3 && ob.gender === 'male').length
     },
     total() {
+      if(!this.profiles) return
       return this.profiles.filter(ob => ob.group[0] === 3).length
     }
   },

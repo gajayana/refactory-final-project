@@ -2,7 +2,7 @@
   v-card
     v-card-title.justify-center
       h3.d-flex Hadir
-    v-card-text
+    v-card-text(v-if='attendees && employees')
       div {{ attendees.length }} / {{ employees.length }}
 </template>
 <script>
