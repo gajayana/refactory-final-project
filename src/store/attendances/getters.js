@@ -13,8 +13,8 @@ export default {
   currentAttendees(state, getters, rootState, rootGetters) {
     if (!rootGetters['users/profiles'] || !state.items) return
     return state.items[0].attendees.map((ob) => {
-      const person = rootGetters['users/profiles'].filter(el => el.uuid === ob)
-      return person[0]
+      const person = rootGetters['users/profiles'].find(el => el.uuid === ob.uuid)
+      return person
     })
   }
 }
