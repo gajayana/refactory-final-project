@@ -1,18 +1,18 @@
 export default {
-  absentees(state, getters, rootState, rootGetters) {
-    if (!rootGetters['users/profiles'] || !state.persons) return
-
-    let items = [];
+  currentAbsentees(state, getters, rootState, rootGetters) {
+    if (!rootGetters['users/profiles'] || !state.items) return
+    const attendees = state.items[0].attendees.map(ob => ob.uuid)
+    let items = []
 
     rootGetters['users/profiles'].forEach(el => {
-      if ( state.persons.findIndex(ob => el.uuid === ob ) < 0 && el.group[0] === 3 ) items.push(el)
+      if ( attendees.findIndex(ob => el.uuid === ob ) < 0 && el.group[0] === 3 ) items.push(el)
     });
 
     return items
   },
-  attendees(state, getters, rootState, rootGetters) {
-    if (!rootGetters['users/profiles'] || !state.persons) return
-    return state.persons.map((ob) => {
+  currentAttendees(state, getters, rootState, rootGetters) {
+    if (!rootGetters['users/profiles'] || !state.items) return
+    return state.items[0].attendees.map((ob) => {
       const person = rootGetters['users/profiles'].filter(el => el.uuid === ob)
       return person[0]
     })

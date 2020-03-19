@@ -1,5 +1,5 @@
 export default {
-  setPersons(state, payload) {
-    state.persons = payload
+  setItems(state, payload) {
+    state.items = payload
   }
 }

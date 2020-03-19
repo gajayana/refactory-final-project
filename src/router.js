@@ -73,7 +73,7 @@ export default new Router({
         if (!store.state.users.persons) store.dispatch('users/fetch')
         if (!store.state.users.profiles) store.dispatch('users/fetchProfiles')
 
-        if (!store.state.attendances.persons) store.dispatch('attendances/fetch')
+        if (!store.state.attendances.items) store.dispatch('attendances/fetch')
         if (!store.state.events.items) store.dispatch('events/fetch')
         next()
       },

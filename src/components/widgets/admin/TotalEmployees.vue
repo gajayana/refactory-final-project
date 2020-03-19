@@ -3,8 +3,8 @@
     v-card-title.justify-center
       h3.d-flex Total Karyawan
     v-card-text
-      div.display-2.font-weight-bold.mb-2.text-center {{ total }}
-      div.subtitle-1.grey--text.text-center {{ male }} Laki-laki / {{ female }} Perempuan
+      p.ma-0.display-2.font-weight-bold.mb-2.text-center {{ total }}
+      p.ma-0.subtitle-1.grey--text.text-center {{ male }} Laki-laki / {{ female }} Perempuan
 </template>
 <script>
 import { mapState } from 'vuex'
