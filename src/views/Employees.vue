@@ -10,11 +10,11 @@
           v-img(:src='employee.image')
         v-list-item-content
           v-list-item-title {{ employee.fullname }}
-          v-list-item-subtitle {{ personEmail(employee.uuid) }}
+          v-list-item-subtitle {{ employee.email }}
           v-list-item-subtitle {{ employee.telephone }}
         v-list-item-content
-          v-list-item-title {{ personDepartment(employee.role) }}
-          v-list-item-subtitle {{ personRole(employee.role) }}
+          v-list-item-title {{ employee.department }}
+          v-list-item-subtitle {{ employee.role }}
 </template>
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex'
@@ -23,9 +23,6 @@ export default {
     ...mapGetters({
       groups: 'groups/employees',
       employees: 'users/filteredEmployees',
-      personEmail: 'users/personEmail',
-      personDepartment: 'users/personDepartment',
-      personRole: 'users/personRole'
     }),
     ...mapState({
       filter_group: state => state.users.filter_group,
