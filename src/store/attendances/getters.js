@@ -16,5 +16,8 @@ export default {
       const person = rootGetters['users/profiles'].find(el => el.uuid === ob.uuid)
       return person
     })
+  },
+  records() {
+
   }
 }

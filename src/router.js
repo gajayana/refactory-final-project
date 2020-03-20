@@ -73,8 +73,9 @@ export default new Router({
         if (!store.state.groups.items) store.dispatch('groups/fetch')
         if (!store.state.users.persons) store.dispatch('users/fetch')
         if (!store.state.users.profiles) store.dispatch('users/fetchProfiles')
+        if (!store.state.roles.items) store.dispatch('roles/fetch')
 
-        // if (!store.state.roles.items) store.dispatch('roles/fetch')
+
         // if (!store.state.leaves.categories) store.dispatch('leaves/fetchCategories')
         // if (!store.state.leaves.items) store.dispatch('leaves/fetchPersons')
         next()
