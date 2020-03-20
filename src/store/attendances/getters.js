@@ -17,7 +17,4 @@ export default {
       return person
     })
   },
-  records() {
-
-  }
 }
